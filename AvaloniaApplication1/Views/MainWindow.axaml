@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication1.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication1.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaApplication1">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <TabControl>
+        <TabItem>
+            <TabItem.Header>Test Async Command</TabItem.Header>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Message}"></TextBlock>
+                <Button Content="Async Button" Command="{Binding AsyncCommandCommand}" />
+
+                <Button Content="Sync Button" Command="{Binding SyncCommandCommand }" />
+            </StackPanel>
+
+        </TabItem>
+
+        <TabItem IsSelected="True">
+            <TabItem.Header>Test pmapp State</TabItem.Header>
+            <StackPanel Spacing="8">
+                <TextBox Text="{Binding CurrentEpc}"></TextBox>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button Command="{Binding EpcEnterCommand}">epc enter</Button>
+                    <Button Command="{Binding EpcRepeatCommand}">epc </Button>
+                    <Button Command="{Binding EpcExitCommand}">epc exit</Button>
+                    <Button Command="{Binding BindStartCommand}">bind click</Button>
+                    <Button Command="{Binding BindFailCommand}">bind fail</Button>
+                    <Button Command="{Binding BindOkCommand}">bind ok</Button>
+                </StackPanel>
+            </StackPanel>
+        </TabItem>
+
+
+    </TabControl>
+
+</Window>
